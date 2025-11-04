@@ -1,0 +1,19 @@
+---
+import { cn } from "utils";
+export interface Props {
+  src: string;
+  class?: string;
+}
+
+const { src, class: className } = Astro.props;
+---
+
+<style>
+  .video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+</style>
+
+<iframe class={cn("video", className)} id="ytplayer" allowfullscreen src={src}
+></iframe>

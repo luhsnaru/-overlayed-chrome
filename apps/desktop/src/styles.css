@@ -1,0 +1,631 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-angle: 360deg;
+
+    --background: 240 4% 16%;
+    --foreground: 240 10% 3.9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-hovered: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --primary: 211 61% 48%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: ;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --error-label: 0 84.2% 60.2%;
+
+    --ring: 240 5% 64.9%;
+
+    --radius: 0.5rem;
+
+    --difficulty-beginner: 201 96% 32%;
+    --difficulty-easy: 150 100% 25%;
+    --difficulty-medium: 35 92% 33%;
+    --difficulty-hard: 0 72% 51%;
+    --difficulty-extreme: 262 83% 58%;
+
+    --difficulty-beginner-dark: 199 69% 72%;
+    --difficulty-easy-dark: 142 77% 73%;
+    --difficulty-medium-dark: 31 86% 60%;
+    --difficulty-hard-dark: 0 91% 71%;
+    --difficulty-extreme-dark: 269 97% 85%;
+  }
+
+  .dark {
+    --background: 240 4% 16%;
+    --foreground: 240 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-hovered: 240 10% 6.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+
+    --primary: 240 91% 64%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: ;
+
+    --destructive: 0 74% 40%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --error-label: 0 92.2% 64.9%;
+
+    --ring: 240 3.7% 15.9%;
+  }
+}
+
+ul {
+  list-style-type: circle;
+}
+
+.nice-scroll::-webkit-scrollbar {
+  width: 18px;
+}
+
+.nice-scroll::-webkit-scrollbar-track {
+  background: #1f1f1f;
+  border-radius: 8px;
+}
+
+.nice-scroll::-webkit-scrollbar-thumb {
+  background-color: #6b6b6b;
+  border-radius: 8px;
+  border: 4px solid #1f1f1f;
+}
+/*
+ * CHROME GOTHIC THEME FOR OVERLAYED
+ * 
+ * HOW TO USE:
+ * 
+ * EASY METHOD (Browser Extension):
+ * 1. Install Overlayed app from https://overlayed.dev
+ * 2. Install Stylus browser extension (Chrome/Firefox/Edge)
+ * 3. Create new style for "overlayed.dev"
+ * 4. Paste this entire CSS file
+ * 5. Save and refresh Overlayed!
+ * 
+ * ADVANCED METHOD (Custom Build):
+ * 1. Fork Overlayed on GitHub
+ * 2. Add this CSS to src/index.css or src/App.css
+ * 3. Build and run
+ * 
+ * This will transform Overlayed into a chrome/gothic themed overlay
+ * with ripples, glows, chains, and all the effects you want!
+ */
+
+/* ========================================
+   GLOBAL CHROME THEME
+   ======================================== */
+
+:root {
+    --chrome-primary: #5865f2;
+    --chrome-secondary: #7289da;
+    --chrome-glow: rgba(88, 101, 242, 0.6);
+    --chrome-dark: #1a1a1a;
+    --chrome-darker: #0a0a0a;
+    --chrome-glass: rgba(200, 220, 255, 0.1);
+    --chrome-metal: linear-gradient(135deg, #808090, #505060);
+}
+
+/* Window background - transparent with subtle gradient */
+body,
+html,
+#root {
+    background: transparent !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+/* Main container styling */
+.overlay-container,
+[class*="overlay"],
+[class*="container"] {
+    background: linear-gradient(135deg, 
+        rgba(10, 10, 20, 0.95) 0%, 
+        rgba(20, 20, 30, 0.9) 100%) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ========================================
+   AVATAR STYLING - CHROME EFFECTS
+   ======================================== */
+
+/* Avatar base - all avatar containers */
+[class*="avatar"],
+[class*="user-avatar"],
+img[src*="cdn.discordapp.com/avatars"] {
+    border-radius: 50% !important;
+    border: 3px solid #404040 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+}
+
+/* Avatar wrapper for effects */
+[class*="avatar"]::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -3px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #606060, #404040) !important;
+    opacity: 0 !important;
+    animation: idlePulse 4s ease-in-out infinite !important;
+    z-index: -1 !important;
+}
+
+@keyframes idlePulse {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+/* ========================================
+   TALKING STATE - CHROME RIPPLE & GLOW
+   ======================================== */
+
+/* Speaking/talking indicator */
+[class*="speaking"],
+[class*="talking"],
+[data-speaking="true"],
+.is-speaking,
+.speaking {
+    transform: scale(1.08) !important;
+    border-color: var(--chrome-primary) !important;
+    box-shadow: 
+        0 0 30px var(--chrome-glow),
+        0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+}
+
+/* Chrome ripple effect for talking */
+[class*="speaking"]::after,
+[class*="talking"]::after,
+[data-speaking="true"]::after,
+.is-speaking::after,
+.speaking::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: -20px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, 
+        var(--chrome-glow) 0%, 
+        rgba(88, 101, 242, 0.4) 30%, 
+        rgba(88, 101, 242, 0.2) 60%, 
+        transparent 100%) !important;
+    filter: blur(10px) !important;
+    animation: chromeRipple 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+@keyframes chromeRipple {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Rotating chrome glow ring */
+[class*="speaking"]::before,
+[class*="talking"]::before,
+[data-speaking="true"]::before,
+.is-speaking::before,
+.speaking::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -8px !important;
+    border-radius: 50% !important;
+    border: 4px solid transparent !important;
+    background: linear-gradient(135deg, 
+        #7289da, 
+        var(--chrome-primary), 
+        #4752c4, 
+        #7289da) border-box !important;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+                  linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    filter: drop-shadow(0 0 15px var(--chrome-glow)) !important;
+    animation: rotateGlow 3s linear infinite !important;
+    pointer-events: none !important;
+}
+
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   MUTED STATE - CHROME CHAINS & GLASS
+   ======================================== */
+
+/* Muted/deafened indicator */
+[class*="muted"],
+[class*="deafened"],
+[data-muted="true"],
+[data-deaf="true"],
+.is-muted,
+.is-deafened {
+    position: relative !important;
+}
+
+/* Frozen glass overlay for muted */
+[class*="muted"]::before,
+[class*="deafened"]::before,
+[data-muted="true"]::before,
+[data-deaf="true"]::before,
+.is-muted::before,
+.is-deafened::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, 
+        rgba(100, 100, 120, 0.75) 0%, 
+        rgba(60, 60, 80, 0.85) 100%) !important;
+    backdrop-filter: blur(4px) brightness(0.6) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+
+/* Glass distortion pattern */
+[class*="muted"]::after,
+[class*="deafened"]::after,
+[data-muted="true"]::after,
+[data-deaf="true"]::after,
+.is-muted::after,
+.is-deafened::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 50% !important;
+    background: 
+        repeating-linear-gradient(45deg, 
+            transparent 0px, 
+            transparent 2px, 
+            rgba(255, 255, 255, 0.1) 2px, 
+            rgba(255, 255, 255, 0.1) 4px),
+        linear-gradient(135deg, 
+            rgba(200, 200, 220, 0.2), 
+            rgba(150, 150, 180, 0.3)) !important;
+    mix-blend-mode: overlay !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+}
+
+/* Chrome chains for muted users */
+[class*="muted"] img,
+[class*="deafened"] img,
+[data-muted="true"] img,
+[data-deaf="true"] img {
+    position: relative !important;
+}
+
+/* Muted icon styling */
+[class*="muted-icon"],
+[class*="deaf-icon"],
+.mute-indicator,
+svg[class*="mute"] {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8)) 
+            drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
+    animation: iconPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* ========================================
+   USERNAME LABELS
+   ======================================== */
+
+[class*="username"],
+[class*="user-name"],
+[class*="display-name"] {
+    color: #e0e0e0 !important;
+    font-weight: 600 !important;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 8px rgba(0, 0, 0, 0.5) !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Username when speaking */
+[class*="speaking"] [class*="username"],
+[class*="talking"] [class*="username"],
+[data-speaking="true"] [class*="username"],
+.is-speaking [class*="username"] {
+    color: var(--chrome-secondary) !important;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 15px var(--chrome-glow) !important;
+}
+
+/* ========================================
+   PARTICLE EFFECTS (if supported)
+   ======================================== */
+
+/* Add shimmer particles around speaking avatars */
+@keyframes particleFloat {
+    0% { opacity: 0; transform: translate(0, 0) scale(0); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--tx, 100px), var(--ty, -100px)) scale(1.5); }
+}
+
+/* ========================================
+   CHROME REFLECTION OVERLAY
+   ======================================== */
+
+[class*="avatar"] img,
+[class*="user-avatar"] img {
+    position: relative !important;
+}
+
+/* Liquid chrome reflection */
+[class*="avatar"]:not([class*="muted"]):not([class*="deafened"])::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 50% !important;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        transparent 100%) !important;
+    border-radius: 50% 50% 0 0 !important;
+    opacity: 0.2 !important;
+    mix-blend-mode: overlay !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+[class*="speaking"]::before,
+[class*="talking"]::before {
+    opacity: 0.4 !important;
+    animation: reflectionShimmer 2s ease-in-out infinite !important;
+}
+
+@keyframes reflectionShimmer {
+    0%, 100% { transform: translateX(-5%); }
+    50% { transform: translateX(5%); }
+}
+
+/* ========================================
+   AMBIENT CHROME GLOW (BACKGROUND)
+   ======================================== */
+
+/* Add overall chrome atmosphere */
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 900px !important;
+    height: 250px !important;
+    background: radial-gradient(ellipse at center,
+        rgba(88, 101, 242, 0.15) 0%,
+        rgba(88, 101, 242, 0.08) 40%,
+        transparent 70%) !important;
+    filter: blur(50px) !important;
+    animation: atmosphericPulse 5s ease-in-out infinite !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+@keyframes atmosphericPulse {
+    0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+}
+
+/* ========================================
+   EDGE GLOW BAR
+   ======================================== */
+
+body::after {
+    content: '' !important;
+    position: fixed !important;
+    bottom: 15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80% !important;
+    height: 4px !important;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(88, 101, 242, 0.4) 20%,
+        rgba(88, 101, 242, 0.8) 50%,
+        rgba(88, 101, 242, 0.4) 80%,
+        transparent 100%) !important;
+    filter: blur(4px) !important;
+    box-shadow: 0 0 20px var(--chrome-glow) !important;
+    animation: edgePulse 3s ease-in-out infinite !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+@keyframes edgePulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        var(--chrome-primary), 
+        var(--chrome-secondary)) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 10px var(--chrome-glow) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--chrome-primary) !important;
+}
+
+/* ========================================
+   TOOLTIPS & UI ELEMENTS
+   ======================================== */
+
+[class*="tooltip"],
+[role="tooltip"] {
+    background: rgba(10, 10, 20, 0.95) !important;
+    border: 1px solid var(--chrome-primary) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px var(--chrome-glow) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Buttons */
+button,
+[role="button"] {
+    background: linear-gradient(135deg, 
+        rgba(88, 101, 242, 0.2), 
+        rgba(88, 101, 242, 0.1)) !important;
+    border: 1px solid rgba(88, 101, 242, 0.5) !important;
+    border-radius: 8px !important;
+    color: #e0e0e0 !important;
+    transition: all 0.3s ease !important;
+}
+
+button:hover,
+[role="button"]:hover {
+    background: linear-gradient(135deg, 
+        var(--chrome-primary), 
+        rgba(88, 101, 242, 0.8)) !important;
+    box-shadow: 0 0 20px var(--chrome-glow) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ========================================
+   CORNER ACCENTS
+   ======================================== */
+
+/* Top left corner accent */
+body {
+    position: relative !important;
+}
+
+/* This creates ambient chrome lighting in corners */
+.overlay-container::before,
+[class*="overlay"]::before {
+    content: '' !important;
+    position: fixed !important;
+    top: -50px !important;
+    left: -50px !important;
+    width: 200px !important;
+    height: 200px !important;
+    background: radial-gradient(circle,
+        var(--chrome-glass) 0%,
+        transparent 70%) !important;
+    filter: blur(30px) !important;
+    animation: cornerPulse 6s ease-in-out infinite !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+@keyframes cornerPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+* {
+    will-change: auto !important;
+}
+
+[class*="speaking"],
+[class*="talking"],
+[class*="avatar"] {
+    will-change: transform, opacity !important;
+}
+
+/* Reduce animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS (if needed)
+   ======================================== */
+
+@media (max-width: 768px) {
+    [class*="avatar"],
+    [class*="user-avatar"] {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    [class*="username"] {
+        font-size: 12px !important;
+    }
+}
+
+/* ========================================
+   FINAL POLISH - VIGNETTE EFFECT
+   ======================================== */
+
+.overlay-container::after,
+[class*="overlay"]::after {
+    content: '' !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: radial-gradient(ellipse at center,
+        transparent 30%,
+        rgba(0, 0, 0, 0.3) 100%) !important;
+    pointer-events: none !important;
+    z-index: 1000 !important;
+}

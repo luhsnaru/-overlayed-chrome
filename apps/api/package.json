@@ -1,0 +1,30 @@
+{
+	"name": "api",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"build": "wrangler deploy --dry-run --outdir=dist",
+		"lint": "eslint",
+		"check:format": "prettier --check \"**/*.{ts,js,md}\"",
+		"clean": "rm -rf dist .turbo node_modules",
+		"format": "prettier --write .",
+		"start": "wrangler dev --remote --port 8787"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20240512.0",
+		"@octokit/types": "^12.6.0",
+		"@octokit/webhooks-types": "^7.5.1",
+		"lint": "workspace:*",
+		"tsconfig": "workspace:*",
+		"types": "workspace:*",
+		"wrangler": "^3.57.1"
+	},
+	"dependencies": {
+		"@octokit/core": "^6.1.2",
+		"@octokit/rest": "^20.1.1",
+		"@octokit/webhooks": "^13.2.7",
+		"hono": "^4.0.10"
+	}
+}

@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import canaryOgImage from "../assets/blog/canary.png";
+import { Download } from "../components/react/download";
+
+const [canary] = await Astro.glob("../content/canary/index.mdx");
+---
+
+<style>
+  /* TODO: move this to a shared layout?*/
+  .main-content {
+    margin: auto;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+  }
+</style>
+
+<Layout
+  title={"Overlayed - Canary"}
+  description="Download the latest canary build"
+  ogImage={canaryOgImage.src}
+>
+  <main class="main-content px-8 pt-28">
+    <section>
+      <div class="flex flex-col">
+        <div class="flex flex-col text-center items-center justify-center">
+          <img
+            src="/img/canary.png"
+            width="256"
+            height="256"
+            class="m-auto"
+            alt="Overlayed Canary"
+          />
+          <h1 class="text-[4rem] leading-[4.5rem] font-extrabold mb-8">
+            Overlayed Canary
+          </h1>
+          <p
+            class="max-w-[900px] leading-[3rem] text-center text-zinc-400 font-bold text-[2.5rem]"
+          >
+            Canary is updated more frequently meaning it could be unstable.
+          </p>
+
+          <div class="pt-8">
+            <Download client:load canary />
+          </div>
+
+          <div class="px-4 prose prose-invert text-left mx-auto pt-28">
+            <canary.Content />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

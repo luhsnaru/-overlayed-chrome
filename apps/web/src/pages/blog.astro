@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import blogOgImage from "../assets/blog/overlayed-blog.png";
+
+// get type of posts
+type BlogPost = CollectionEntry<"blog">;
+
+const blogPosts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort my blog posts
+blogPosts.sort(
+  (a: BlogPost, b: BlogPost) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+);
+---
+
+<Layout
+  title="Overlayed - Blog"
+  description="The official blog of Overlayed"
+  ogImage={blogOgImage.src}
+>
+  <main class="mx-auto px-8 pt-28">
+    <section>
+      <h1 class="text-4xl font-bold text-center mb-10">Blog</h1>
+      <ul
+        class="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3"
+      >
+        {
+          blogPosts.map((post: BlogPost) => (
+            <div class="p-2">
+              <li>
+                <a href={`/blog/${post.data.customSlug}`} class="group">
+                  <img
+                    src={post.data.ogImage.src}
+                    alt={post.data.title}
+                    width={395}
+                    height={208}
+                    class="w-full object-cover rounded lg:rounded-md"
+                  />
+                  <div class="opacity-60 group-hover:opacity-100 text-2xl pt-3">
+                    {post.data.title}
+                  </div>
+                  <div class="opacity-40 group-hover:opacity-80 space-x-1">
+                    <time datetime={post.data.pubDate}>
+                      {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>
+                </a>
+              </li>
+            </div>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/card.astro";
+import Link from "../components/link.astro";
+import Hero from "../components/hero.astro";
+import Contributors from "../components/contributors.astro";
+import { Download } from "../components/react/download";
+import { Stars } from "../components/react/stars";
+
+import user from "../img/users.png";
+import transparent from "../img/transparent.png";
+import onTop from "../img/on-top.png";
+import resources from "../img/resources.png";
+---
+
+<style>
+  main {
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .main-content {
+    margin: auto;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+  }
+</style>
+
+<Layout>
+  <main class="pt-60">
+    <Hero />
+
+    <div class="w-full flex justify-center items-center">
+      <Link
+        title="Star Overlayed on GitHub"
+        to="https://github.com/overlayeddev/overlayed"
+        target="_blank"
+        class="z-50"
+      >
+        <Stars client:load />
+      </Link>
+    </div>
+    <div
+      class="relative z-50 main-content pt-4 pb-4 px-4 min-h-screen w-full flex justify-center items-center flex-col gap-2"
+    >
+      <h1 class="!mb-0">
+        Welcome to
+        <span
+          class="inline-flex leading-[1.5em] font-black transform animate-background-shine bg-[linear-gradient(110deg,#5865F2,45%,#9d9ffc,55%,#5865F2)] bg-[length:250%_100%] bg-clip-text text-transparent"
+        >
+          Overlayed
+        </span>
+      </h1>
+      <!-- prettier-ignore -->
+      <p class="text-center mb-10 text-zinc-400 text-3xl">
+        See who's speaking in your Discord voice channel
+      </p>
+      <Download client:load canary={false} />
+      <div class="cards grid mt-12 md:grid-cols-2 w-full items-center gap-8">
+        <Card
+          name="User List"
+          desc="See who is speaking, muted, and deafened in the current voice channel"
+          src={user}
+          alt="User List"
+        />
+        <Card
+          name="Transparent & Pinnable"
+          desc="Transparent window that ignores mouse clicks"
+          src={transparent}
+          alt="Transparent"
+        />
+        <Card
+          name="Always on Top"
+          desc="Always stays on top so you can continue working or gaming"
+          src={onTop}
+          alt="Always on top"
+        />
+        <Card
+          name="Blazingly Fast™"
+          desc="Built with Tauri, an efficient Rust framework"
+          src={resources}
+          alt="Lightweight"
+        />
+      </div>
+      <Contributors />
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import discordOgImage from "../assets/blog/discord.png";
+import { DISCORD_INVITE_LINK } from "../constants";
+---
+
+<style>
+  /* TODO: move this to a shared layout?*/
+  .main-content {
+    margin: auto;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+  }
+</style>
+
+<Layout
+  title={"Overlayed - Discord Server"}
+  description="Join our Discord server to get help, report bugs, or just chat with the community."
+  ogImage={discordOgImage.src}
+>
+  <main class="main-content px-8 pt-28">
+    <section>
+      <div class="flex flex-col">
+        <div class="flex flex-col text-center items-center justify-center">
+          <img
+            src="/img/discord/logo.png"
+            width="256"
+            height="256"
+            class="m-auto"
+            alt="Overlayed Canary"
+          />
+          <h1 class="text-[4rem] leading-[4.5rem] font-extrabold mb-8">
+            Overlayed Discord
+          </h1>
+          <p
+            class="max-w-[900px] leading-[3rem] text-center text-zinc-400 font-bold text-[2.5rem]"
+          >
+            Discord is the best place to report issues, get support, and chat
+            with the community.
+          </p>
+          <a
+            href={DISCORD_INVITE_LINK}
+            class="bg-primary hover:bg-primary/80 text-white text-[1.75rem] sm:text-[2rem] flex items-center justify-center sm:h-[80px] h-20 font-bold py-2 px-12 rounded-2xl my-10"
+            >Join Discord</a
+          >
+        </div>
+
+        <hr class="mb-8 border-zinc-800" />
+        <div class="flex flex-col items-center">
+          <p class="mb-4 max-w-[900px] text-center font-bold text-[1.75rem]">
+            Curious and wanna look around?
+          </p>
+          <widgetbot
+            server="906349283358408704"
+            channel="913829657189687327"
+            id="embed"
+            width="100%"
+            height="500"
+            shard="https://e.widgetbot.io"></widgetbot>
+          <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"
+          ></script>
+          <script>
+            window.addEventListener("message", (e) => {
+              if (typeof e?.data === "string") {
+                const payload = JSON.parse(e.data);
+                const embed = document.getElementById("embed");
+                const url = new URL(window.location.href);
+                const isQuakeconInUrl = url.searchParams.has("quakecon");
+
+                if (payload.event === "ready" && isQuakeconInUrl) {
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  embed?.emit("navigate", {
+                    guild: "906349283358408704",
+                    channel: "1259843730375053363",
+                  });
+                }
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

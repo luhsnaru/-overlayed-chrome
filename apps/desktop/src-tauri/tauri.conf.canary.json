@@ -1,0 +1,16 @@
+{
+  "productName": "Overlayed Canary",
+  "version": "0.0.0",
+  "identifier": "com.overlayed.canary.dev",
+  "bundle": {
+    "active": true,
+    "targets": ["appimage", "nsis", "dmg"],
+    "icon": [
+      "icons/canary/32x32.png",
+      "icons/canary/128x128.png",
+      "icons/canary/128x128@2x.png",
+      "icons/canary/icon.icns",
+      "icons/canary/icon.ico"
+    ]
+  }
+}

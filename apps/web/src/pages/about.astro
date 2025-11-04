@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Frontmatter {
+  title: string;
+  description?: string;
+}
+
+const [about] = await Astro.glob<Frontmatter>("../content/about/index.mdx");
+---
+
+<Layout
+  title={`Overlayed - ${about.frontmatter.title}`}
+  description={about.frontmatter.description}
+>
+  <main class="px-4 prose prose-invert mx-auto">
+    <div class="pt-2 pb-20"></div>
+    <about.Content />
+  </main>
+</Layout>

@@ -1,0 +1,9 @@
+{
+  "productName": "Overlayed-CI",
+  "version": "0.0.0",
+  "identifier": "com.overlayed.ci.dev",
+  "bundle": {
+    "active": false,
+    "targets": "all"
+  }
+}

@@ -1,0 +1,87 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface Props {
+  name: string;
+  desc: string;
+  src: ImageMetadata;
+  alt: string;
+}
+
+const { name, desc, src, alt } = Astro.props;
+---
+
+<style>
+  .card {
+    --c1: #13151a;
+    --c2: #13151a;
+    --c3: #5875f2;
+    --c4: #2d8f85;
+    --c5: #637c54;
+    --gradient: conic-gradient(
+      var(--c1),
+      var(--c2),
+      var(--c3),
+      var(--c4),
+      var(--c3),
+      var(--c2),
+      var(--c1)
+    );
+    border-radius: 0.5rem;
+    background-color: var(--c1);
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  .card:hover {
+    --c3: #7d92e8;
+    --c4: #50d3c4;
+    --c5: #91bc76;
+  }
+  .card-border,
+  .card-shadow {
+    position: absolute;
+    inset: -6px;
+    z-index: -1;
+    border-radius: calc(0.25rem + 8px);
+    container-type: size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card-shadow {
+    filter: blur(4.5rem);
+    opacity: 0.75;
+  }
+  .gradient {
+    position: absolute;
+    width: 1000cqmax;
+    height: 1000cqmax;
+    background-image: var(--gradient);
+    border-radius: calc(0.25rem + 8px);
+    animation-name: rotate;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<div class={"card border-zinc-800 object-cover p-6 border rounded-2xl w-full"}>
+  <div class="card-border">
+    <div class={"gradient"}></div>
+  </div>
+  <div class="card-shadow">
+    <div class={"gradient"}></div>
+  </div>
+  <h2 class="pb-4 text-2xl font-bold text-white">{name}</h2>
+  <p class="pb-4">{desc}</p>
+  <Image src={src} alt={alt} class="w-full" width={512} height={512} />
+</div>

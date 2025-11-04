@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+export const getStaticPaths = (async () => {
+  const legalFiles = await getCollection("legal");
+
+  return legalFiles.map((file) => {
+    return {
+      params: {
+        slug: file.slug,
+      },
+      props: file,
+    };
+  });
+}) satisfies GetStaticPaths;
+
+type Props = CollectionEntry<"legal">;
+
+const post: Props = Astro.props;
+
+const { Content } = await post.render();
+---
+
+<Layout
+  title={`Overlayed - ${post.data.title}`}
+  description={post.data.description}
+>
+  <main class="px-4 prose prose-invert mx-auto pt-28">
+    <Content />
+  </main>
+</Layout>
